@@ -1,29 +1,16 @@
-﻿using HarmonyLib;
-
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
+﻿using System;
 using UnityEngine;
-
-using static LayerFaith;
 
 namespace GanExtendDisplay
 {
 	internal class EnchantDisplayClass {
-		public static void DNA_WriteNote_Prefix(DNA __instance, UINote n) {
+		public static void DNA_WriteNote_Prefix(DNA __instance, UINote n, Chara tg = null) {
                 if (__instance.slot >= 1)
                 {
                     n.AddText("isGeneReqSlots".lang(__instance.slot.ToString() ?? ""), FontColor.Warning);
                 }
 
-                if (!__instance.CanRemove())
+                if (!__instance.CanRemove(tg))
                 {
                     n.AddText("isPermaGene".lang(), FontColor.Warning);
                 }
