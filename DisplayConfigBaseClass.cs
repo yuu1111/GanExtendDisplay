@@ -22,7 +22,7 @@ namespace GanExtendDisplay
 
         public class ConfigClass
         {
-            public DisplayOption OptionStatus { get; set; }
+            private DisplayOption OptionStatus { get; set; }
 
             public ConfigClass(string option)
             {

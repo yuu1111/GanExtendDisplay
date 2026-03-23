@@ -21,27 +21,27 @@ namespace GanExtendDisplay
                 {
                     case Rarity.Crude:
                         text = "x";
-                        c = RarityColors.Color_Crude;
+                        c = RarityColors.Crude;
                         break;
                     case Rarity.Normal:
                         text = "";
-                        c = RarityColors.Color_Normal;
+                        c = RarityColors.Normal;
                         break;
                     case Rarity.Superior:
                         text = "△";
-                        c = RarityColors.Color_Superior;
+                        c = RarityColors.Superior;
                         break;
                     case Rarity.Legendary:
                         text = "◇";
-                        c = RarityColors.Color_Legendary;
+                        c = RarityColors.Legendary;
                         break;
                     case Rarity.Mythical:
                         text = "☆";
-                        c = RarityColors.Color_Mythical;
+                        c = RarityColors.Mythical;
                         break;
                     case Rarity.Artifact:
                         text = "★";
-                        c = RarityColors.Color_Artifact;
+                        c = RarityColors.Artifact;
                         break;
                 }
 

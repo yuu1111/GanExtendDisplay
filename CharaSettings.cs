@@ -4,11 +4,11 @@ using static GanExtendDisplay.DisplayConfigBaseClass;
 
 namespace GanExtendDisplay
 {
-    public class CharaSettings
+    public static class CharaSettings
     {
         public class CharaConfigClass
         {
-            private ConfigClass _charaDisplayLine;
+            private readonly ConfigClass _charaDisplayLine;
 
             public CharaConfigClass(string charaDisplayLine, bool charaDisplayLinePCFactionOnly, int size)
             {

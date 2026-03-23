@@ -60,31 +60,29 @@ namespace GanExtendDisplay
         }
 
         public static bool ModEnable = true;
-        public static bool isAltKeyDown;
+        public static bool IsAltKeyDown;
         public static bool ChangeDisplay;
         public static bool ChangeDisplayKeep;
-
-
 
         private void Update()
         {
             // 检测LeftAlt键是否被按下
             if (Input.GetKeyDown(KeyCode.LeftAlt))
             {
-                isAltKeyDown = true;
+                IsAltKeyDown = true;
             }
 
             // 检测LeftAlt键是否松开，如果松开了，将相关变量重置
             if (Input.GetKeyUp(KeyCode.LeftAlt))
             {
-                isAltKeyDown = false;
+                IsAltKeyDown = false;
                 if (!ChangeDisplayKeep)
                 {
                     ChangeDisplay = false;
                 }
             }
 
-            if (isAltKeyDown)
+            if (IsAltKeyDown)
             {
                 if (Input.GetKeyUp(KeyCode.CapsLock))
                 {

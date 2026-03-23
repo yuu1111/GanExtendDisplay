@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace GanExtendDisplay
 {
-    public class CharaDisplayElements
+    public static class CharaDisplayElements
     {
         public static string Show_Affinity(Chara __instance, string __result)
         {
@@ -30,27 +30,27 @@ namespace GanExtendDisplay
             {
                 case Rarity.Crude:
                     text2 = "x";
-                    c = RarityColors.Color_Crude;
+                    c = RarityColors.Crude;
                     break;
                 case Rarity.Normal:
                     text2 = "";
-                    c = RarityColors.Color_Normal;
+                    c = RarityColors.Normal;
                     break;
                 case Rarity.Superior:
                     text2 = "△";
-                    c = RarityColors.Color_Superior;
+                    c = RarityColors.Superior;
                     break;
                 case Rarity.Legendary:
                     text2 = "◇";
-                    c = RarityColors.Color_Legendary;
+                    c = RarityColors.Legendary;
                     break;
                 case Rarity.Mythical:
                     text2 = "☆";
-                    c = RarityColors.Color_Mythical;
+                    c = RarityColors.Mythical;
                     break;
                 case Rarity.Artifact:
                     text2 = "★";
-                    c = RarityColors.Color_Artifact;
+                    c = RarityColors.Artifact;
                     break;
             }
 
@@ -62,7 +62,6 @@ namespace GanExtendDisplay
         public static string Show_Lv(Chara __instance)
         {
             int num = 2;
-            int lv = EClass.pc.LV;
             bool flag2 = __instance.LV >= EClass.pc.LV * 5;
             if (flag2)
             {
