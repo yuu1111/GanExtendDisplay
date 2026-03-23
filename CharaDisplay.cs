@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace GanExtendDisplay
 {
-    internal class CharaDisplayClass
+    internal static class CharaDisplay
     {
         private static readonly char[] TrimChars = { ',', ' ' };
 
@@ -14,9 +14,9 @@ namespace GanExtendDisplay
         {
 
             //顶行
-            __result = CharaDisplayElementsClass.Show_Affinity(__instance, __result); //亲密度
-            __result = CharaDisplayElementsClass.Show_Rarity(__instance, __result); //稀有度
-            __result = CharaDisplayElementsClass.Show_Lv(__instance) + __result; //威胁标志
+            __result = CharaDisplayElements.Show_Affinity(__instance, __result); //亲密度
+            __result = CharaDisplayElements.Show_Rarity(__instance, __result); //稀有度
+            __result = CharaDisplayElements.Show_Lv(__instance) + __result; //威胁标志
 
             //第1行
             if (CharaSettings.CharaDisplayLine1Settings.CharaDisplayLineOut)
@@ -24,7 +24,7 @@ namespace GanExtendDisplay
                 if (!CharaSettings.CharaDisplayLine1Settings.CharaDisplayPCFactionOnly || __instance.IsPCFaction)
                 {
                     __result += Environment.NewLine;
-                    __result += (CharaDisplayElementsClass.Show_RaceJob(__instance) + CharaDisplayElementsClass.StyleShow(__instance))
+                    __result += (CharaDisplayElements.Show_RaceJob(__instance) + CharaDisplayElements.StyleShow(__instance))
                         .TagSize(CharaSettings.CharaDisplayLine1Settings.Size); //种族职业模式
                 }
             }
@@ -36,7 +36,7 @@ namespace GanExtendDisplay
                 {
                     __result += Environment.NewLine;
                     __result +=
-                        (CharaDisplayElementsClass.Show_HP(__instance) + CharaDisplayElementsClass.DVPV(__instance) + CharaDisplayElementsClass.Show_Speed(__instance)).TagSize(CharaSettings
+                        (CharaDisplayElements.Show_HP(__instance) + CharaDisplayElements.DVPV(__instance) + CharaDisplayElements.Show_Speed(__instance)).TagSize(CharaSettings
                             .CharaDisplayLine2Settings.Size);
                 }
             }
@@ -48,7 +48,7 @@ namespace GanExtendDisplay
                 {
                     __result += Environment.NewLine;
                     __result +=
-                        (CharaDisplayElementsClass.Show_SP(__instance) + CharaDisplayElementsClass.Show_Hunger(__instance) + CharaDisplayElementsClass.Show_Works(__instance)).TagSize(
+                        (CharaDisplayElements.Show_SP(__instance) + CharaDisplayElements.Show_Hunger(__instance) + CharaDisplayElements.Show_Works(__instance)).TagSize(
                             CharaSettings.CharaDisplayLine3Settings.Size);
                 }
             }
@@ -61,7 +61,7 @@ namespace GanExtendDisplay
                 {
                     __result += Environment.NewLine;
                     __result +=
-                        (CharaDisplayElementsClass.Show_MP(__instance) + CharaDisplayElementsClass.Show_Weight(__instance) + CharaDisplayElementsClass.Show_EXP(__instance)).TagSize(
+                        (CharaDisplayElements.Show_MP(__instance) + CharaDisplayElements.Show_Weight(__instance) + CharaDisplayElements.Show_EXP(__instance)).TagSize(
                             CharaSettings.CharaDisplayLine4Settings.Size);
                 }
             }
@@ -71,7 +71,7 @@ namespace GanExtendDisplay
             {
                 if (!CharaSettings.CharaDisplayLineResistSettings.CharaDisplayPCFactionOnly || __instance.IsPCFaction)
                 {
-                    __result += CharaDisplayElementsClass.Show_Resist(__instance).TagSize(CharaSettings.CharaDisplayLineResistSettings.Size);
+                    __result += CharaDisplayElements.Show_Resist(__instance).TagSize(CharaSettings.CharaDisplayLineResistSettings.Size);
                 }
             }
 
@@ -82,7 +82,7 @@ namespace GanExtendDisplay
                 if (!CharaSettings.CharaDisplayLineAttributesSettings.CharaDisplayPCFactionOnly || __instance.IsPCFaction)
                 {
                     __result += Environment.NewLine;
-                    __result += CharaDisplayElementsClass.Show_Attributes(__instance).TagSize(CharaSettings.CharaDisplayLineAttributesSettings.Size);
+                    __result += CharaDisplayElements.Show_Attributes(__instance).TagSize(CharaSettings.CharaDisplayLineAttributesSettings.Size);
                 }
             }
 

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace GanExtendDisplay
 {
-    public class CharaDisplayElementsClass
+    public class CharaDisplayElements
     {
         public static string Show_Affinity(Chara __instance, string __result)
         {

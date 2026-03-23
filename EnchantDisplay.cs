@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace GanExtendDisplay
 {
-    internal class EnchantDisplayClass
+    internal static class EnchantDisplay
     {
         public static void DNA_WriteNote_Prefix(DNA __instance, UINote n, Chara tg = null)
         {

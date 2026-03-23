@@ -33,27 +33,27 @@ namespace GanExtendDisplay
             CharaDisplayLineActSettings = new CharaConfigClass(CharaDisplayLineAct.Value, CharaDisplayLineActPCFactionOnly.Value, CharaDisplayLineActSize.Value);
             if (PluginSettings.CharaDisplay.Value != "Disable")
             {
-                Harmony.CreateAndPatchAll(typeof(CharaDisplay));
+                Harmony.CreateAndPatchAll(typeof(CharaDisplayPatch));
             }
 
             if (PluginSettings.ThingDisplay.Value != "Disable")
             {
-                Harmony.CreateAndPatchAll(typeof(ThingDisplay));
+                Harmony.CreateAndPatchAll(typeof(ThingDisplayPatch));
             }
 
             if (PluginSettings.InteractDisplay.Value != "Disable")
             {
-                Harmony.CreateAndPatchAll(typeof(InteractDisplay));
+                Harmony.CreateAndPatchAll(typeof(InteractDisplayPatch));
             }
 
             if (PluginSettings.NotificationUI.Value != "Disable")
             {
-                Harmony.CreateAndPatchAll(typeof(NotificationUI));
+                Harmony.CreateAndPatchAll(typeof(NotificationUIPatch));
             }
 
             if (PluginSettings.EnchantDisplay.Value != "Disable")
             {
-                Harmony.CreateAndPatchAll(typeof(EnchantDisplay));
+                Harmony.CreateAndPatchAll(typeof(EnchantDisplayPatch));
             }
 
             Logger.LogInfo("Successfully applied patches for [ Gan Extend Display ] plugin.");

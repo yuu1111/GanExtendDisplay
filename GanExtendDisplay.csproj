@@ -74,16 +74,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CharaDisplayElements.cs" />
     <Compile Include="CharaDisplay.cs" />
-    <Compile Include="ColorStyles.cs" />
+    <Compile Include="CharaDisplayElements.cs" />
+    <Compile Include="CharaSettings.cs" />
+    <Compile Include="ConfigInit.cs" />
+    <Compile Include="DisplayConfigBaseClass.cs" />
     <Compile Include="EnchantDisplay.cs" />
-    <Compile Include="HarmonyPatches.cs" />
+    <Compile Include="InteractDisplay.cs" />
+    <Compile Include="Patches\CharaDisplayPatch.cs" />
+    <Compile Include="Patches\EnchantDisplayPatch.cs" />
+    <Compile Include="Patches\InteractDisplayPatch.cs" />
+    <Compile Include="Patches\NotificationUIPatch.cs" />
+    <Compile Include="Patches\ThingDisplayPatch.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="PluginSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RarityColors.cs" />
+    <Compile Include="ResistColors.cs" />
     <Compile Include="ThingDisplay.cs" />
-    <Compile Include="InteractDisplay.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="package.xml">

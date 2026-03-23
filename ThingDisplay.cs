@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GanExtendDisplay
 {
-    internal class ThingDisplayClass
+    internal static class ThingDisplay
     {
         public static string Thing_GetHoverText_Postfix(Thing __instance, string __result)
         {

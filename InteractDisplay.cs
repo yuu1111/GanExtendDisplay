@@ -1,7 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 namespace GanExtendDisplay
 {
-	internal class InteractDisplayClass
+	internal static class InteractDisplay
 	{
 		public static string ExtendGetText(BaseTaskHarvest __instance, string __result) {
 			string tool = null;
