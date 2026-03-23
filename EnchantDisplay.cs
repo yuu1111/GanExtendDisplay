@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 namespace GanExtendDisplay
 {
+    /// エンチャント・DNA情報の表示パネルを拡張
     internal static class EnchantDisplay
     {
+        /// DNAの詳細ノートを書き換え (スロット要求数・永続遺伝子・戦術・遺伝子効果の星評価を表示)
         public static void DNA_WriteNote_Prefix(DNA __instance, UINote n, Chara tg = null)
         {
             if (__instance.slot >= 1)
@@ -80,6 +82,7 @@ namespace GanExtendDisplay
         }
 
 
+        /// エンチャント表示を拡張 (星評価[***+]・数値・アイコン種別の詳細表示)
         public static void Enchant_AddEncNote_Prefix(
             Element __instance,
             UINote n,

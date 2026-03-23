@@ -2,6 +2,7 @@ using BepInEx.Configuration;
 
 namespace GanExtendDisplay
 {
+    /// MOD全体の表示機能ごとの有効/無効設定 (BepInEx設定ファイルにバインド)
     public static class PluginSettings
     {
         public static ConfigEntry<string> CharaDisplay;

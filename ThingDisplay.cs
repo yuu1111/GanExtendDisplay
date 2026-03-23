@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace GanExtendDisplay
 {
+    /// アイテムのホバーテキストにレアリティ・Lv・素材・価格・錠前Lvを追加
     internal static class ThingDisplay
     {
         public static string Thing_GetHoverText_Postfix(Thing __instance, string __result)

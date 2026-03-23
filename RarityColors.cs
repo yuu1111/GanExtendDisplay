@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace GanExtendDisplay
 {
+    /// レアリティごとの表示色とシンボル文字の定義
     public static class RarityColors
     {
         public static Color Crude = new Color(0.44705883f, 0.21176471f, 0.21176471f);

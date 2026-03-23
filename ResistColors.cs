@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace GanExtendDisplay
 {
+    /// 各属性耐性の表示色とフォーマット処理
     public static class ResistColors
     {
         public static Color FlameResistance = new Color(1f, 0.5f, 0.2f);
@@ -27,6 +28,7 @@ namespace GanExtendDisplay
         public static Color DamageResistance = new Color(0.5f, 0.5f, 0.5f);
         public static Color CurseResistance = new Color(0.2f, 0.2f, 0.2f);
 
+        /// 耐性IDに応じた色を適用した耐性名を返す
         public static string GetName(string res, int id)
         {
             switch (id)
@@ -54,6 +56,7 @@ namespace GanExtendDisplay
             return res;
         }
 
+        /// 耐性リストを指定行数で折り返して整形
         public static string ShortOut(List<string> inList, int lineSize = 5)
         {
             if (inList.Count == 0) { return ""; }

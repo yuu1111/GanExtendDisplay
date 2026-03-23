@@ -3,8 +3,10 @@ using static GanExtendDisplay.DisplayConfigBaseClass;
 
 namespace GanExtendDisplay
 {
+    /// キャラクター表示の各行ごとの設定 (表示モード・PC陣営限定・フォントサイズ)
     public static class CharaSettings
     {
+        /// 各表示行の設定をまとめるクラス
         public class CharaConfigClass
         {
             private readonly ConfigClass _charaDisplayLine;

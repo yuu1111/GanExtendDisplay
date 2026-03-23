@@ -2,6 +2,7 @@ using BepInEx.Configuration;
 
 namespace GanExtendDisplay
 {
+    /// BepInEx設定ファイルへの全設定項目のバインドを一括実行
     public static class ConfigInit
     {
         public static void InitializeConfiguration(ConfigFile config)
