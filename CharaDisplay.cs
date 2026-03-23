@@ -7,7 +7,7 @@ namespace GanExtendDisplay
 
 {
 	internal class CharaDisplayClass {
-		
+
 		public static string Chara_GetHoverText_Postfix(Chara __instance, string __result) {
 
 			//顶行
@@ -158,7 +158,7 @@ namespace GanExtendDisplay
 							aliasParentName = "(" + aliasParentElement + ")";
 						}
 					}
-					
+
 					text3 = text3 + (item4.act.Name + aliasParentName + ", ").TagSize(CharaSettings.CharaDisplayLineActSettings.Size);
 				}
 
