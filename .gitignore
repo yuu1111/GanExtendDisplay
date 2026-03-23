@@ -1,0 +1,23 @@
+# Build results
+bin/
+obj/
+_bin/
+
+# Visual Studio
+.vs/
+
+# JetBrains Rider
+.idea/
+
+# User-specific files
+*.user
+*.suo
+*.rsuser
+
+# NuGet
+*.nupkg
+packages/
+
+# Dependencies (local DLLs - see deps/.gitignore)
+deps/*
+!deps/.gitignore

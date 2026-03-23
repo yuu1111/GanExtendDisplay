@@ -1,9 +1,7 @@
 ﻿using BepInEx.Configuration;
-using System.Runtime.CompilerServices;
 using System;
 
 using static GanExtendDisplay.DisplayConfigBaseClass;
-using static Layer;
 
 namespace GanExtendDisplay
 {

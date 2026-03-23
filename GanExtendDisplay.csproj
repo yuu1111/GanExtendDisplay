@@ -32,32 +32,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>G:\SteamLibrary\steamapps\common\Elin\BepInEx\core\0Harmony.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>deps\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx.Core">
-      <HintPath>G:\SteamLibrary\steamapps\common\Elin\BepInEx\core\BepInEx.Core.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>deps\BepInEx.Core.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx.Unity">
-      <HintPath>G:\SteamLibrary\steamapps\common\Elin\BepInEx\core\BepInEx.Unity.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>deps\BepInEx.Unity.dll</HintPath>
     </Reference>
     <Reference Include="Elin">
-      <HintPath>G:\SteamLibrary\steamapps\common\Elin\Elin_Data\Managed\Elin.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>deps\Elin.dll</HintPath>
     </Reference>
     <Reference Include="Plugins">
-      <HintPath>G:\SteamLibrary\steamapps\common\Elin\Elin_Data\Managed\Plugins.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>deps\Plugins.dll</HintPath>
     </Reference>
     <Reference Include="Plugins.BaseCore">
-      <HintPath>G:\SteamLibrary\steamapps\common\Elin\Elin_Data\Managed\Plugins.BaseCore.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>deps\Plugins.BaseCore.dll</HintPath>
     </Reference>
     <Reference Include="Plugins.UI">
-      <HintPath>G:\SteamLibrary\steamapps\common\Elin\Elin_Data\Managed\Plugins.UI.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>deps\Plugins.UI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -68,20 +61,16 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>G:\SteamLibrary\steamapps\common\Elin\Elin_Data\Managed\UnityEngine.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>deps\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>G:\SteamLibrary\steamapps\common\Elin\Elin_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>deps\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>G:\SteamLibrary\steamapps\common\Elin\Elin_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>deps\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>G:\SteamLibrary\steamapps\common\Elin\Elin_Data\Managed\UnityEngine.UI.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>deps\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

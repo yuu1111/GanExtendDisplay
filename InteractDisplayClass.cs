@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GanExtendDisplay
+﻿namespace GanExtendDisplay
 {
 	internal class InteractDisplayClass
 	{
@@ -20,19 +14,12 @@ namespace GanExtendDisplay
 			if (__instance.pos.cell.growth != null) {
 				int growthNow = __instance.pos.cell.growth.stage.idx ;
 				int growthMax = __instance.pos.cell.growth.HarvestStage;
-				growth = "\n" + (((growthNow > growthMax)&&(growthMax>0)) ? "Withering:" : "Growth:") + growthNow.ToString();
+				growth = "\n" + (growthNow > growthMax&&growthMax>0 ? "Withering:" : "Growth:") + growthNow;
 				if (growthMax > 0) {
-					growth = growth + "/" + __instance.pos.cell.growth.HarvestStage.ToString();
+					growth = growth + "/" + __instance.pos.cell.growth.HarvestStage;
 				}
 			}
-			__result = string.Concat(new string[]
-			{
-				__result,
-				"\n",
-				tool,
-				hard,
-				growth
-			});
+			__result = string.Concat(__result, "\n", tool, hard, growth);
 
 			return __result;
 		}

@@ -1,17 +1,7 @@
-﻿using BepInEx;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-using Unity.Jobs;
 using UnityEngine;
-using static GanExtendDisplay.DisplayConfigBaseClass;
-using static TextureReplace;
-using static Weather;
 
 namespace GanExtendDisplay
 
@@ -95,7 +85,7 @@ namespace GanExtendDisplay
 				text2 += Environment.NewLine;
 				//text2 = text2 + "Lv:" + __instance.LV + "  HP:" + __instance.hp + "/" + __instance.MaxHP + "  MP:" + __instance.mana.value + "/" + __instance.mana.max + "  DV:" + __instance.DV + "  PV:" + __instance.PV + "  Hunger:" + __instance.hunger.value;
 				text2 += Environment.NewLine;
-				text2 = text2 + "Global:" + __instance.IsGlobal + "  AI:" + __instance.ai?.ToString() + " " + __instance.source.tactics.IsEmpty(EClass.sources.tactics.map.TryGetValue(__instance.id)?.id ?? EClass.sources.tactics.map.TryGetValue(__instance.job.id)?.id ?? "predator");
+				text2 = text2 + "Global:" + __instance.IsGlobal + "  AI:" + __instance.ai + " " + __instance.source.tactics.IsEmpty(EClass.sources.tactics.map.TryGetValue(__instance.id)?.id ?? EClass.sources.tactics.map.TryGetValue(__instance.job.id)?.id ?? "predator");
 				text2 += Environment.NewLine;
 				text2 = text2 + __instance.uid + __instance.IsMinion + "/" + __instance.c_uidMaster + "/" + __instance.master;
 				text2 = text2 + " dir:" + __instance.dir + " skin:" + __instance.idSkin;
