@@ -106,7 +106,7 @@ namespace GanExtendDisplay
 			}
 
 			string text3 = "";
-			IEnumerable<BaseStats> enumerable = __instance.conditions.Concat((!__instance.IsPCFaction) ? new BaseStats[0] : new BaseStats[2] { __instance.hunger, __instance.stamina });
+			IEnumerable<BaseStats> enumerable = __instance.conditions.Concat((!__instance.IsPCFaction) ? new BaseStats[0] : new BaseStats[] { __instance.hunger, __instance.stamina });
 			if (enumerable.Count() > 0) {
 				text3 += Environment.NewLine;
 				text3 += "<size=14>";
