@@ -24,39 +24,8 @@ namespace GanExtendDisplay
 
         public static string Show_Rarity(Chara __instance, string __result)
         {
-            string text2 = "";
-            Color c = Color.black;
-            switch (__instance.rarity)
-            {
-                case Rarity.Crude:
-                    text2 = "x";
-                    c = RarityColors.Crude;
-                    break;
-                case Rarity.Normal:
-                    text2 = "";
-                    c = RarityColors.Normal;
-                    break;
-                case Rarity.Superior:
-                    text2 = "△";
-                    c = RarityColors.Superior;
-                    break;
-                case Rarity.Legendary:
-                    text2 = "◇";
-                    c = RarityColors.Legendary;
-                    break;
-                case Rarity.Mythical:
-                    text2 = "☆";
-                    c = RarityColors.Mythical;
-                    break;
-                case Rarity.Artifact:
-                    text2 = "★";
-                    c = RarityColors.Artifact;
-                    break;
-            }
-
-            text2 = text2.TagColor(c);
-            __result = text2 + " " + __result;
-            return __result;
+            RarityColors.GetSymbolAndColor(__instance.rarity, out string symbol, out Color c);
+            return symbol.TagColor(c) + " " + __result;
         }
 
         public static string Show_Lv(Chara __instance)
@@ -123,9 +92,7 @@ namespace GanExtendDisplay
 
         public static string Show_RaceJob(Chara __instance)
         {
-            string res =
-                $" {Lang._gender(__instance.bio.gender)} {__instance.bio.TextAge(__instance)} [{__instance.race.GetName()} {__instance.job.GetName()} {__instance.tactics.source.GetName()}]";
-            return res;
+            return $" {Lang._gender(__instance.bio.gender)} {__instance.bio.TextAge(__instance)} [{__instance.race.GetName()} {__instance.job.GetName()} {__instance.tactics.source.GetName()}]";
         }
 
         public static string Show_Hunger(Chara __instance)
@@ -172,24 +139,13 @@ namespace GanExtendDisplay
             return res;
         }
 
-        public static string Show_Debug(Chara __instance)
-        {
-            string res = "";
-            res += "Global:" + __instance.IsGlobal + "  AI:" + __instance.ai + " " + __instance.ai.Current + "" +
-                   __instance.source.tactics.IsEmpty(EClass.sources.tactics.map.TryGetValue(__instance.id)?.id ??
-                                                     EClass.sources.tactics.map.TryGetValue(__instance.job.id)?.id ?? "predator");
-            res += "\n" + __instance.uid + __instance.IsMinion + "/" + __instance.c_uidMaster + "/" + __instance.master;
-            return res;
-        }
-
         public static string Show_Weight(Chara __instance)
         {
             float weight = __instance.ChildrenWeight / 1000f;
             float limit = __instance.WeightLimit / 1000f;
-            string result = $" {Element.Get(11).GetName()}:" +
-                            (((int)weight).ToString("F0") + "s/" + ((int)limit).ToString("F0") + "s").TagColor(
-                                (weight < limit * 0.8f) ? new Color(0.86f, 1f, 0.89f) : new Color(1f, 0.8f, 0.8f));
-            return result;
+            return $" {Element.Get(11).GetName()}:" +
+                   (((int)weight).ToString("F0") + "s/" + ((int)limit).ToString("F0") + "s").TagColor(
+                       weight < limit * 0.8f ? new Color(0.86f, 1f, 0.89f) : new Color(1f, 0.8f, 0.8f));
         }
 
         public static string Show_EXP(Chara __instance)
@@ -204,10 +160,10 @@ namespace GanExtendDisplay
 
         public static string Show_Resist(Chara __instance)
         {
-            List<string> eleList = __instance.elements.ListElements(x => x.source.category == "resist" && x.Value != 0).Select(x => $"{ResistColors.GetName(x.Name, x.id)}:{x.Value}")
+            var eleList = __instance.elements.ListElements(x => x.source.category == "resist" && x.Value != 0)
+                .Select(x => $"{ResistColors.GetName(x.Name, x.id)}:{x.Value}")
                 .ToList();
-            string resist = ResistColors.ShortOut(eleList);
-            return resist;
+            return ResistColors.ShortOut(eleList);
         }
     }
 }

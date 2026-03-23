@@ -1,4 +1,4 @@
-﻿// ReSharper disable InconsistentNaming
+// ReSharper disable InconsistentNaming
 
 using System;
 using System.Linq;
@@ -6,67 +6,67 @@ using UnityEngine;
 
 namespace GanExtendDisplay
 {
+    /// キャラクターのホバーテキストを拡張する表示ロジック
     internal static class CharaDisplay
     {
         private static readonly char[] TrimChars = { ',', ' ' };
 
+        /// GetHoverText (1行目) に好感度・レアリティ・レベル・ステータス行を追加
         public static string Chara_GetHoverText_Postfix(Chara __instance, string __result)
         {
+            // ヘッダー行: 好感度・レアリティシンボル・脅威レベル
+            __result = CharaDisplayElements.Show_Affinity(__instance, __result);
+            __result = CharaDisplayElements.Show_Rarity(__instance, __result);
+            __result = CharaDisplayElements.Show_Lv(__instance) + __result;
 
-            //顶行
-            __result = CharaDisplayElements.Show_Affinity(__instance, __result); //亲密度
-            __result = CharaDisplayElements.Show_Rarity(__instance, __result); //稀有度
-            __result = CharaDisplayElements.Show_Lv(__instance) + __result; //威胁标志
-
-            //第1行
+            // Line1: 性別・年齢・種族・職業・戦術・防具スキル・攻撃スタイル
             if (CharaSettings.CharaDisplayLine1Settings.CharaDisplayLineOut)
             {
                 if (!CharaSettings.CharaDisplayLine1Settings.CharaDisplayPCFactionOnly || __instance.IsPCFaction)
                 {
                     __result += Environment.NewLine;
                     __result += (CharaDisplayElements.Show_RaceJob(__instance) + CharaDisplayElements.StyleShow(__instance))
-                        .TagSize(CharaSettings.CharaDisplayLine1Settings.Size); //种族职业模式
+                        .TagSize(CharaSettings.CharaDisplayLine1Settings.Size);
                 }
             }
 
-            //第2行
+            // Line2: HP・DV・PV・速度
             if (CharaSettings.CharaDisplayLine2Settings.CharaDisplayLineOut)
             {
                 if (!CharaSettings.CharaDisplayLine2Settings.CharaDisplayPCFactionOnly || __instance.IsPCFaction)
                 {
                     __result += Environment.NewLine;
                     __result +=
-                        (CharaDisplayElements.Show_HP(__instance) + CharaDisplayElements.DVPV(__instance) + CharaDisplayElements.Show_Speed(__instance)).TagSize(CharaSettings
-                            .CharaDisplayLine2Settings.Size);
+                        (CharaDisplayElements.Show_HP(__instance) + CharaDisplayElements.DVPV(__instance) + CharaDisplayElements.Show_Speed(__instance))
+                            .TagSize(CharaSettings.CharaDisplayLine2Settings.Size);
                 }
             }
 
-            //第3行
+            // Line3: SP・空腹度・仕事/趣味
             if (CharaSettings.CharaDisplayLine3Settings.CharaDisplayLineOut)
             {
                 if (!CharaSettings.CharaDisplayLine3Settings.CharaDisplayPCFactionOnly || __instance.IsPCFaction)
                 {
                     __result += Environment.NewLine;
                     __result +=
-                        (CharaDisplayElements.Show_SP(__instance) + CharaDisplayElements.Show_Hunger(__instance) + CharaDisplayElements.Show_Works(__instance)).TagSize(
-                            CharaSettings.CharaDisplayLine3Settings.Size);
+                        (CharaDisplayElements.Show_SP(__instance) + CharaDisplayElements.Show_Hunger(__instance) + CharaDisplayElements.Show_Works(__instance))
+                            .TagSize(CharaSettings.CharaDisplayLine3Settings.Size);
                 }
             }
 
-
-            //第4行
+            // Line4: MP・重量・経験値
             if (CharaSettings.CharaDisplayLine4Settings.CharaDisplayLineOut)
             {
                 if (!CharaSettings.CharaDisplayLine4Settings.CharaDisplayPCFactionOnly || __instance.IsPCFaction)
                 {
                     __result += Environment.NewLine;
                     __result +=
-                        (CharaDisplayElements.Show_MP(__instance) + CharaDisplayElements.Show_Weight(__instance) + CharaDisplayElements.Show_EXP(__instance)).TagSize(
-                            CharaSettings.CharaDisplayLine4Settings.Size);
+                        (CharaDisplayElements.Show_MP(__instance) + CharaDisplayElements.Show_Weight(__instance) + CharaDisplayElements.Show_EXP(__instance))
+                            .TagSize(CharaSettings.CharaDisplayLine4Settings.Size);
                 }
             }
 
-            //抗性行
+            // 耐性行
             if (CharaSettings.CharaDisplayLineResistSettings.CharaDisplayLineOut)
             {
                 if (!CharaSettings.CharaDisplayLineResistSettings.CharaDisplayPCFactionOnly || __instance.IsPCFaction)
@@ -75,8 +75,7 @@ namespace GanExtendDisplay
                 }
             }
 
-
-            //属性行,按下显示
+            // 主能力行
             if (CharaSettings.CharaDisplayLineAttributesSettings.CharaDisplayLineOut)
             {
                 if (!CharaSettings.CharaDisplayLineAttributesSettings.CharaDisplayPCFactionOnly || __instance.IsPCFaction)
@@ -89,17 +88,20 @@ namespace GanExtendDisplay
             return __result;
         }
 
+        /// GetHoverText2 に好物・デバッグ情報・愛の鞭による仕事一覧・状態異常・アビリティを追加
         public static string Chara_GetHoverText2_Prefix(Chara __instance, string __result)
         {
+            // 好物表示
             string text = "";
             if (__instance.knowFav || (CharaSettings.CharaDisplayLineFavgiftSettings.CharaDisplayLineOut &&
                                        (!CharaSettings.CharaDisplayLineAttributesSettings.CharaDisplayPCFactionOnly || __instance.IsPCFaction)))
             {
                 text += Environment.NewLine;
-                text = text + $"<size={CharaSettings.CharaDisplayLineFavgiftSettings.Size}>" + "favgift".lang(__instance.GetFavCat().GetName().ToLower(), __instance.GetFavFood().GetName()) +
-                       "</size>";
+                text = text + $"<size={CharaSettings.CharaDisplayLineFavgiftSettings.Size}>" +
+                       "favgift".lang(__instance.GetFavCat().GetName().ToLower(), __instance.GetFavFood().GetName()) + "</size>";
             }
 
+            // デバッグ情報 (showExtra有効時)
             string text2 = "";
             if (EClass.debug.showExtra)
             {
@@ -113,6 +115,7 @@ namespace GanExtendDisplay
                 text2 = text2 + " dir:" + __instance.dir + " skin:" + __instance.idSkin;
             }
 
+            // 愛の鞭を持っている時、仲間の仕事・趣味一覧を表示
             if (EClass.pc.held?.trait is TraitWhipLove && __instance.IsPCFaction)
             {
                 text2 += Environment.NewLine;
@@ -121,17 +124,18 @@ namespace GanExtendDisplay
                 {
                     text2 = text2 + item.Name + ", ";
                 }
-
                 foreach (Hobby item2 in __instance.ListHobbies())
                 {
                     text2 = text2 + item2.Name + ", ";
                 }
-
                 text2 = text2.TrimEnd(TrimChars) + "</size>";
             }
 
+            // 状態異常・バフ・デバフ表示 (PC陣営は空腹・スタミナも含む)
             string text3 = "";
-            var enumerable = __instance.conditions.Concat(!__instance.IsPCFaction ? Array.Empty<BaseStats>() : new BaseStats[] { __instance.hunger, __instance.stamina }).ToList();
+            var enumerable = __instance.conditions
+                .Concat(!__instance.IsPCFaction ? Array.Empty<BaseStats>() : new BaseStats[] { __instance.hunger, __instance.stamina })
+                .ToList();
             if (enumerable.Count > 0)
             {
                 text3 += Environment.NewLine;
@@ -141,9 +145,7 @@ namespace GanExtendDisplay
                 {
                     string text4 = item3.GetPhaseStr();
                     if (text4.IsEmpty() || text4 == "#")
-                    {
                         continue;
-                    }
 
                     Color c = Color.white;
                     switch (item3.source.group)
@@ -158,13 +160,11 @@ namespace GanExtendDisplay
                             break;
                     }
 
-
                     text4 = text4 + "(" + item3.GetValue() + ")";
                     if (__instance.resistCon != null && __instance.resistCon.TryGetValue(item3.id, out int resistVal))
                     {
                         text4 = text4 + "{" + resistVal + "}";
                     }
-
 
                     num++;
                     text3 = text3 + text4.TagColor(c) + ", ";
@@ -181,7 +181,9 @@ namespace GanExtendDisplay
                 }
             }
 
-            if (CharaSettings.CharaDisplayLineActSettings.CharaDisplayLineOut && (!CharaSettings.CharaDisplayLineActSettings.CharaDisplayPCFactionOnly || __instance.IsPCFaction))
+            // アビリティ一覧
+            if (CharaSettings.CharaDisplayLineActSettings.CharaDisplayLineOut &&
+                (!CharaSettings.CharaDisplayLineActSettings.CharaDisplayPCFactionOnly || __instance.IsPCFaction))
             {
                 text3 += Environment.NewLine;
                 foreach (ActList.Item item4 in __instance.ability.list.items)
@@ -195,10 +197,8 @@ namespace GanExtendDisplay
                             aliasParentName = "(" + aliasParentElement + ")";
                         }
                     }
-
                     text3 = text3 + (item4.act.Name + aliasParentName + ", ").TagSize(CharaSettings.CharaDisplayLineActSettings.Size);
                 }
-
                 text3 = text3.TrimEnd(TrimChars);
             }
 

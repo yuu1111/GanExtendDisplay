@@ -15,41 +15,12 @@ namespace GanExtendDisplay
                     __result += "(x)";
                 }
 
-                string text = "";
-                Color c = Color.black;
-                switch (__instance.rarity)
-                {
-                    case Rarity.Crude:
-                        text = "x";
-                        c = RarityColors.Crude;
-                        break;
-                    case Rarity.Normal:
-                        text = "";
-                        c = RarityColors.Normal;
-                        break;
-                    case Rarity.Superior:
-                        text = "△";
-                        c = RarityColors.Superior;
-                        break;
-                    case Rarity.Legendary:
-                        text = "◇";
-                        c = RarityColors.Legendary;
-                        break;
-                    case Rarity.Mythical:
-                        text = "☆";
-                        c = RarityColors.Mythical;
-                        break;
-                    case Rarity.Artifact:
-                        text = "★";
-                        c = RarityColors.Artifact;
-                        break;
-                }
-
+                RarityColors.GetSymbolAndColor(__instance.rarity, out string text, out Color c);
                 text = text.TagColor(c);
-                __result = $"{text} Lv.{__instance.LV.ToString()} ".TagColor(c) + $"{__instance.material.GetName()} {__result}";
-                string lockLv = (__instance.c_lockLv > 0) ? ($" Lock.Lv.{__instance.c_lockLv.ToString().TagColor(Color.yellow)}") : "";
-                string Scales = $"¤ {__instance.GetPrice().ToString()}".TagSize(14);
-                __result = $"{__result} {Scales} {lockLv}";
+                __result = $"{text} Lv.{__instance.LV} ".TagColor(c) + $"{__instance.material.GetName()} {__result}";
+                string lockLv = __instance.c_lockLv > 0 ? $" Lock.Lv.{__instance.c_lockLv.ToString().TagColor(Color.yellow)}" : "";
+                string scales = $"¤ {__instance.GetPrice()}".TagSize(14);
+                __result = $"{__result} {scales} {lockLv}";
             }
 
             return __result;

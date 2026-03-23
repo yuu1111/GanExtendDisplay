@@ -1,4 +1,3 @@
-using System;
 using BepInEx.Configuration;
 using static GanExtendDisplay.DisplayConfigBaseClass;
 
@@ -22,35 +21,35 @@ namespace GanExtendDisplay
             public int Size { get; }
         }
 
-        public static ConfigEntry<String> CharaDisplayLine1;
+        public static ConfigEntry<string> CharaDisplayLine1;
         public static ConfigEntry<bool> CharaDisplayLine1PCFactionOnly;
         public static ConfigEntry<int> CharaDisplayLine1Size;
 
-        public static ConfigEntry<String> CharaDisplayLine2;
+        public static ConfigEntry<string> CharaDisplayLine2;
         public static ConfigEntry<bool> CharaDisplayLine2PCFactionOnly;
         public static ConfigEntry<int> CharaDisplayLine2Size;
 
-        public static ConfigEntry<String> CharaDisplayLine3;
+        public static ConfigEntry<string> CharaDisplayLine3;
         public static ConfigEntry<bool> CharaDisplayLine3PCFactionOnly;
         public static ConfigEntry<int> CharaDisplayLine3Size;
 
-        public static ConfigEntry<String> CharaDisplayLine4;
+        public static ConfigEntry<string> CharaDisplayLine4;
         public static ConfigEntry<bool> CharaDisplayLine4PCFactionOnly;
         public static ConfigEntry<int> CharaDisplayLine4Size;
 
-        public static ConfigEntry<String> CharaDisplayLineResist;
+        public static ConfigEntry<string> CharaDisplayLineResist;
         public static ConfigEntry<bool> CharaDisplayLineResistPCFactionOnly;
         public static ConfigEntry<int> CharaDisplayLineResistSize;
 
-        public static ConfigEntry<String> CharaDisplayLineAttributes;
+        public static ConfigEntry<string> CharaDisplayLineAttributes;
         public static ConfigEntry<bool> CharaDisplayLineAttributesPCFactionOnly;
         public static ConfigEntry<int> CharaDisplayLineAttributesSize;
 
-        public static ConfigEntry<String> CharaDisplayLineFavgift;
+        public static ConfigEntry<string> CharaDisplayLineFavgift;
         public static ConfigEntry<bool> CharaDisplayLineFavgiftPCFactionOnly;
         public static ConfigEntry<int> CharaDisplayLineFavgiftSize;
 
-        public static ConfigEntry<String> CharaDisplayLineAct;
+        public static ConfigEntry<string> CharaDisplayLineAct;
         public static ConfigEntry<bool> CharaDisplayLineActPCFactionOnly;
         public static ConfigEntry<int> CharaDisplayLineActSize;
 
@@ -86,13 +85,13 @@ namespace GanExtendDisplay
         public static void CharaDisplayLineActPCFactionOnlyConfig(ConfigFile config) { CharaDisplayLineActPCFactionOnly = config.Bind(new ConfigDefinition("Extend Charater Display", "Display Line Act PCFactionOnly"), false, new ConfigDescription("LineAct: Act(s). Options: \"true\", \"false\".", new AcceptableValueList<bool>(true, false))); }
         public static void CharaDisplayLineActSizeConfig(ConfigFile config) { CharaDisplayLineActSize = config.Bind(new ConfigDefinition("Extend Charater Display", "Display Line Act Size"), 14, new ConfigDescription("LineAct: Act(s). Default: \"14\".")); }
 
-        public static CharaConfigClass CharaDisplayLine1Settings = null;
-        public static CharaConfigClass CharaDisplayLine2Settings = null;
-        public static CharaConfigClass CharaDisplayLine3Settings = null;
-        public static CharaConfigClass CharaDisplayLine4Settings = null;
-        public static CharaConfigClass CharaDisplayLineResistSettings = null;
-        public static CharaConfigClass CharaDisplayLineAttributesSettings = null;
-        public static CharaConfigClass CharaDisplayLineFavgiftSettings = null;
-        public static CharaConfigClass CharaDisplayLineActSettings = null;
+        public static CharaConfigClass CharaDisplayLine1Settings;
+        public static CharaConfigClass CharaDisplayLine2Settings;
+        public static CharaConfigClass CharaDisplayLine3Settings;
+        public static CharaConfigClass CharaDisplayLine4Settings;
+        public static CharaConfigClass CharaDisplayLineResistSettings;
+        public static CharaConfigClass CharaDisplayLineAttributesSettings;
+        public static CharaConfigClass CharaDisplayLineFavgiftSettings;
+        public static CharaConfigClass CharaDisplayLineActSettings;
     }
 }

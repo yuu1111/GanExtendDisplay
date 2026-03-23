@@ -59,57 +59,46 @@ namespace GanExtendDisplay
             Logger.LogInfo("Successfully applied patches for [ Gan Extend Display ] plugin.");
         }
 
+        /// MOD全体の有効/無効 (Alt+End で切替)
         public static bool ModEnable = true;
-        public static bool IsAltKeyDown;
-        public static bool ChangeDisplay;
-        public static bool ChangeDisplayKeep;
 
+        /// Hide設定の表示を一時的に切り替える (Alt押下中に有効)
+        public static bool ChangeDisplay;
+
+        private static bool _isAltKeyDown;
+
+        /// Hide設定の表示を維持する (Alt+CapsLock でトグル)
+        private static bool _changeDisplayKeep;
+
+        /// キーボード入力によるMOD状態の制御
         private void Update()
         {
-            // 检测LeftAlt键是否被按下
             if (Input.GetKeyDown(KeyCode.LeftAlt))
-            {
-                IsAltKeyDown = true;
-            }
+                _isAltKeyDown = true;
 
-            // 检测LeftAlt键是否松开，如果松开了，将相关变量重置
             if (Input.GetKeyUp(KeyCode.LeftAlt))
             {
-                IsAltKeyDown = false;
-                if (!ChangeDisplayKeep)
-                {
+                _isAltKeyDown = false;
+                if (!_changeDisplayKeep)
                     ChangeDisplay = false;
-                }
             }
 
-            if (IsAltKeyDown)
+            if (_isAltKeyDown)
             {
                 if (Input.GetKeyUp(KeyCode.CapsLock))
-                {
-                    ChangeDisplayKeep = !ChangeDisplayKeep;
-                }
+                    _changeDisplayKeep = !_changeDisplayKeep;
                 else
-                {
                     ChangeDisplay = true;
-                }
 
                 if (Input.GetKeyUp(KeyCode.End))
-                {
                     ModEnable = !ModEnable;
-                }
 
                 if (Input.GetKeyUp(KeyCode.Home))
-                {
                     EClass.debug.showExtra = !EClass.debug.showExtra;
-                }
             }
 
-            //保持显示
-            if (ChangeDisplayKeep)
-            {
+            if (_changeDisplayKeep)
                 ChangeDisplay = true;
-            }
-
         }
     }
 }

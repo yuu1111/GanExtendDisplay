@@ -1,15 +1,14 @@
-using System;
 using BepInEx.Configuration;
 
 namespace GanExtendDisplay
 {
     public static class PluginSettings
     {
-        public static ConfigEntry<String> CharaDisplay;
-        public static ConfigEntry<String> ThingDisplay;
-        public static ConfigEntry<String> InteractDisplay;
-        public static ConfigEntry<String> NotificationUI;
-        public static ConfigEntry<String> EnchantDisplay;
+        public static ConfigEntry<string> CharaDisplay;
+        public static ConfigEntry<string> ThingDisplay;
+        public static ConfigEntry<string> InteractDisplay;
+        public static ConfigEntry<string> NotificationUI;
+        public static ConfigEntry<string> EnchantDisplay;
 
         public static void CharaDisplayConfig(ConfigFile config)
         {
