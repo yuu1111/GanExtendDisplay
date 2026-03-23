@@ -45,10 +45,7 @@ namespace GanExtendDisplay
 				}
 
 			}
-			public bool getCheckStatus() {
-				return this.CheckStatus;
 			}
-		}
 
 
 	}
@@ -102,7 +99,6 @@ namespace GanExtendDisplay
 
 			// 构造函数，用于初始化父类属性和新增属性
 			public CharaConfigClass(string charaDisplayLine, bool charaDisplayLine1PCFactionOnly, int size) {
-				Main.Logger.LogInfo("checkPont1.1.1");
 				_charaDisplayLine = new ConfigClass(charaDisplayLine);
 				_charaDisplayPCFactionOnly = charaDisplayLine1PCFactionOnly;
 				_size = size;
@@ -154,7 +150,6 @@ namespace GanExtendDisplay
 
 		public static ConfigEntry<String> CharaDisplayLineAct;
 		public static ConfigEntry<bool> CharaDisplayLineActPCFactionOnly;
-		//public static ConfigEntry<bool> CharaDisplayLineActAliasParent;
 		public static ConfigEntry<int> CharaDisplayLineActSize;
 
 		//line1
@@ -303,12 +298,6 @@ namespace GanExtendDisplay
 			ConfigDescription configDescription = new ConfigDescription("LineAct: Act(s). Options: \"true\", \"false\".", acceptableValues, Array.Empty<object>());
 			CharaDisplayLineActPCFactionOnly = config.Bind<bool>(configDefinition, false, configDescription);
 		}
-		//public static void CharaDisplayLineActAliasParentConfig(ConfigFile config) {
-		//	ConfigDefinition configDefinition = new ConfigDefinition("Extend Charater Display", "Display Line Act PCFactionOnly");
-		//	var acceptableValues = new AcceptableValueList<bool>(true, false);
-		//	ConfigDescription configDescription = new ConfigDescription("LineAct: Act(s)(Contain alias Parent Attribute). Options: \"true\", \"false\".", acceptableValues, Array.Empty<object>());
-		//	CharaDisplayLineActPCFactionOnly = config.Bind<bool>(configDefinition, true, configDescription);
-		//}
 		public static void CharaDisplayLineActSizeConfig(ConfigFile config) {
 			ConfigDefinition configDefinition = new ConfigDefinition("Extend Charater Display", "Display Line Act Size");
 			ConfigDescription configDescription = new ConfigDescription("LineAct: Favgift(s).  Default: \"14\".", null, Array.Empty<object>());

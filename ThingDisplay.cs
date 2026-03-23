@@ -5,39 +5,36 @@ namespace GanExtendDisplay
 	internal class ThingDisplayClass
 	{
 		public static string Thing_GetHoverText_Postfix(Thing __instance, string __result) {
-			string text = "";
-			if (__instance.isNPCProperty)
-				text += "(x)";
 			if (!__instance.isChara) {
-				bool isNPCProperty = __instance.isNPCProperty;
-				if (isNPCProperty) {
+				if (__instance.isNPCProperty) {
 					__result += "(x)";
 				}
+				string text = "";
 				Color c = Color.black;
 				switch (__instance.rarity) {
 					case Rarity.Crude:
 						text = "x";
-						c = CS.Color_Crude;
+						c = RarityColors.Color_Crude;
 						break;
 					case Rarity.Normal:
 						text = "";
-						c = CS.Color_Normal;
+						c = RarityColors.Color_Normal;
 						break;
 					case Rarity.Superior:
 						text = "△";
-						c = CS.Color_Superior;
+						c = RarityColors.Color_Superior;
 						break;
 					case Rarity.Legendary:
 						text = "◇";
-						c = CS.Color_Legendary;
+						c = RarityColors.Color_Legendary;
 						break;
 					case Rarity.Mythical:
 						text = "☆";
-						c = CS.Color_Mythical;
+						c = RarityColors.Color_Mythical;
 						break;
 					case Rarity.Artifact:
 						text = "★";
-						c = CS.Color_Artifact;
+						c = RarityColors.Color_Artifact;
 						break;
 				}
 				text = text.TagColor(c);

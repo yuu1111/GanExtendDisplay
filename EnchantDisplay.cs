@@ -7,7 +7,7 @@ namespace GanExtendDisplay
 		public static void DNA_WriteNote_Prefix(DNA __instance, UINote n, Chara tg = null) {
                 if (__instance.slot >= 1)
                 {
-                    n.AddText("isGeneReqSlots".lang(__instance.slot.ToString() ?? ""), FontColor.Warning);
+                    n.AddText("isGeneReqSlots".lang(__instance.slot.ToString()), FontColor.Warning);
                 }
 
                 if (!__instance.CanRemove(tg))
@@ -30,7 +30,7 @@ namespace GanExtendDisplay
                         int num = __instance.vals[i];
                         int num2 = __instance.vals[i + 1];
                         FontColor color = ((num2 >= 0) ? FontColor.Good : FontColor.Bad);
-                        string @ref = (num + 1).ToString() ?? "";
+                        string @ref = (num + 1).ToString();
                         string text = "";
                         num2 = Mathf.Abs(num2 / 20) + 1;
                         text = text + "[" + "*".Repeat(Mathf.Clamp(num2, 1, 5)) + ((num2 > 5) ? "+" : "") + "]";
@@ -167,10 +167,8 @@ namespace GanExtendDisplay
 								sprite = EClass.core.refs.icons.enc.mat;
 							}
 
-							foreach (int key in thing.source.elementMap.Keys) {
-								if (key == __instance.id) {
-									sprite = EClass.core.refs.icons.enc.card;
-								}
+							if (thing.source.elementMap.ContainsKey(__instance.id)) {
+								sprite = EClass.core.refs.icons.enc.card;
 							}
 
 							if (thing.IsFood && __instance.IsFoodTrait) {

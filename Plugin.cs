@@ -4,8 +4,6 @@ using UnityEngine;
 using BepInEx.Logging;
 using static GanExtendDisplay.CharaSettings;
 
-
-
 namespace GanExtendDisplay
 {
     [BepInPlugin("ExtendDisplay", "ExtendDisplay", "1.0.0")]
@@ -43,7 +41,7 @@ namespace GanExtendDisplay
                 Harmony.CreateAndPatchAll(typeof(ThingDisplay));
             }
 
-            if (PluginSettings.ThingDisplay.Value != "Disable")
+            if (PluginSettings.InteractDisplay.Value != "Disable")
             {
                 Harmony.CreateAndPatchAll(typeof(InteractDisplay));
             }
@@ -53,7 +51,7 @@ namespace GanExtendDisplay
                 Harmony.CreateAndPatchAll(typeof(NotificationUI));
             }
 
-            if (PluginSettings.NotificationUI.Value != "Disable")
+            if (PluginSettings.EnchantDisplay.Value != "Disable")
             {
                 Harmony.CreateAndPatchAll(typeof(EnchantDisplay));
             }

@@ -45,7 +45,7 @@ namespace GanExtendDisplay
 		通知UI
 		*/
 
-		public static ConfigClass NotificationUiConfig = new ConfigClass(PluginSettings.CharaDisplay.Value);
+		public static ConfigClass NotificationUiConfig = new ConfigClass(PluginSettings.NotificationUI.Value);
 
 		//通知显示
 		[HarmonyPrefix]
@@ -66,7 +66,8 @@ namespace GanExtendDisplay
 			if (!Main.ModEnable) { return true; }
 			if (!NotificationUiConfig.CheckStatus) { return true; }
 			BaseStats baseStats = __instance.stats();
-			__instance.text = baseStats.GetText() + ((!baseStats.GetText().IsEmpty()) ? ("(" + baseStats.GetValue().ToString() + ")") : "");
+			string statusText = baseStats.GetText();
+			__instance.text = statusText + (!statusText.IsEmpty() ? ("(" + baseStats.GetValue().ToString() + ")") : "");
 			__instance.item.button.mainText.color = baseStats.GetColor(__instance.item.button.skinRoot.GetButton().colorProf);
 			return false;
 		}
@@ -91,13 +92,6 @@ namespace GanExtendDisplay
 		道具显示
 		*/
 
-		//////显示道具信息,地面指示
-		//[HarmonyPostfix]
-		//[HarmonyPatch(typeof(Card), nameof(Card.GetHoverText))]
-		//public static void Card_GetHoverText_Postfix(Card __instance, ref string __result) {
-		//	if (!Main.ModEnable) { return; }
-		//	__result = CardShow.Card_GetHoverText_Postfix(__instance, __result);
-		//}
 		public static ConfigClass ThingDisplayConfig = new ConfigClass(PluginSettings.ThingDisplay.Value);
 
 
@@ -114,31 +108,24 @@ namespace GanExtendDisplay
 	}
 	public class InteractDisplay
 	{
-		/* 
-		 交互显示
-		 */
-		public static ConfigClass ThingDisplayConfig = new ConfigClass(PluginSettings.InteractDisplay.Value);
+		public static ConfigClass InteractDisplayConfig = new ConfigClass(PluginSettings.InteractDisplay.Value);
 
-		//鼠标悬停显示-地图显示
 		[HarmonyPrefix]
 		[HarmonyPatch(typeof(WidgetMouseover), nameof(WidgetMouseover.Show))]
 		public static void WidgetMouseover_Show_Prefix(WidgetMouseover __instance, ref string s) {
 			if (!Main.ModEnable) { return; }
-			if (!ThingDisplayConfig.CheckStatus) { return ; }
+			if (!InteractDisplayConfig.CheckStatus) { return ; }
 			PointTarget mouseTarget = EMono.scene.mouseTarget;
-			bool flag = mouseTarget.target != null && mouseTarget.target is Zone;
-			if (flag) {
-				s = s + " Lv." + (mouseTarget.target as Zone).DangerLv.ToString();
+			if (mouseTarget.target != null && mouseTarget.target is Zone zone) {
+				s = s + " Lv." + zone.DangerLv.ToString();
 			}
 		}
 
-
-		//鼠标悬停显示-采集、挖矿、收集等交互任务
 		[HarmonyPostfix]
 		[HarmonyPatch(typeof(BaseTaskHarvest), nameof(BaseTaskHarvest.GetText))]
 		public static void BaseTaskHarvest_GetText_Postfix(BaseTaskHarvest __instance, ref string __result) {
 			if (!Main.ModEnable) { return; }
-			if (!ThingDisplayConfig.CheckStatus) { return; }
+			if (!InteractDisplayConfig.CheckStatus) { return; }
 			__result = InteractDisplayClass.ExtendGetText(__instance, __result);
 		}
 	}
