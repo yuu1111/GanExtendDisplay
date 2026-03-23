@@ -91,9 +91,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="G:\SteamLibrary\steamapps\common\Elin\BepInEx\core\0Harmony.dll" />
-    <Analyzer Include="G:\SteamLibrary\steamapps\common\Elin\BepInEx\core\BepInEx.Core.dll" />
-    <Analyzer Include="G:\SteamLibrary\steamapps\common\Elin\Elin_Data\Managed\Elin.dll" />
+    <Analyzer Include="deps\0Harmony.dll" />
+    <Analyzer Include="deps\BepInEx.Core.dll" />
+    <Analyzer Include="deps\Elin.dll" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

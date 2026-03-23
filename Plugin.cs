@@ -1,7 +1,7 @@
 ﻿using BepInEx;
+using BepInEx.Logging;
 using HarmonyLib;
 using UnityEngine;
-using BepInEx.Logging;
 using static GanExtendDisplay.CharaSettings;
 
 namespace GanExtendDisplay
@@ -60,9 +60,9 @@ namespace GanExtendDisplay
         }
 
         public static bool ModEnable = true;
-        public static bool isAltKeyDown = false;
-        public static bool ChangeDisplay = false;
-        public static bool ChangeDisplayKeep = false;
+        public static bool isAltKeyDown;
+        public static bool ChangeDisplay;
+        public static bool ChangeDisplayKeep;
 
 
 

@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿// ReSharper disable InconsistentNaming
+
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -139,7 +142,7 @@ namespace GanExtendDisplay
         public static string StyleShow(Chara __instance)
         {
 
-            return $" {__instance.elements.GetOrCreateElement(__instance.GetArmorSkill()).Name} {("style" + __instance.body.GetAttackStyle().ToString()).lang()}";
+            return $" {__instance.elements.GetOrCreateElement(__instance.GetArmorSkill()).Name} {("style" + __instance.body.GetAttackStyle()).lang()}";
         }
 
         public static string Show_Works(Chara __instance)
@@ -166,6 +169,7 @@ namespace GanExtendDisplay
                 var e = __instance.elements.GetElement(id);
                 res += $" {e.Name}:{e.Value}";
             }
+
             return res;
         }
 
@@ -201,8 +205,9 @@ namespace GanExtendDisplay
 
         public static string Show_Resist(Chara __instance)
         {
-            List<string> eleList = __instance.elements.ListElements(x => x.source.category == "resist" && x.Value != 0).Select(x => $"{resistRarityColors.GetName(x.Name, x.id)}:{x.Value}").ToList();
-            string resist = resistRarityColors.ShortOut(eleList);
+            List<string> eleList = __instance.elements.ListElements(x => x.source.category == "resist" && x.Value != 0).Select(x => $"{ResistColors.GetName(x.Name, x.id)}:{x.Value}")
+                .ToList();
+            string resist = ResistColors.ShortOut(eleList);
             return resist;
         }
     }

@@ -1,5 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// ReSharper disable InconsistentNaming
+
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace GanExtendDisplay
     internal class CharaDisplayClass
     {
         private static readonly char[] TrimChars = { ',', ' ' };
+
         public static string Chara_GetHoverText_Postfix(Chara __instance, string __result)
         {
 
@@ -129,8 +131,8 @@ namespace GanExtendDisplay
             }
 
             string text3 = "";
-            IEnumerable<BaseStats> enumerable = __instance.conditions.Concat(!__instance.IsPCFaction ? Array.Empty<BaseStats>() : new BaseStats[] { __instance.hunger, __instance.stamina });
-            if (enumerable.Any())
+            var enumerable = __instance.conditions.Concat(!__instance.IsPCFaction ? Array.Empty<BaseStats>() : new BaseStats[] { __instance.hunger, __instance.stamina }).ToList();
+            if (enumerable.Count > 0)
             {
                 text3 += Environment.NewLine;
                 text3 += "<size=14>";

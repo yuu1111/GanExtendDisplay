@@ -1,4 +1,5 @@
-﻿namespace GanExtendDisplay
+﻿// ReSharper disable InconsistentNaming
+namespace GanExtendDisplay
 {
 	internal class InteractDisplayClass
 	{
@@ -9,7 +10,7 @@
 				tool = __instance.tool.Name + ".";
 			}
 
-			string hard = __instance.IsTooHard ? $"Lv:{__instance.toolLv.ToString()}<{__instance.reqLv.ToString()}" : $"Lv:{__instance.toolLv.ToString()} >= " + __instance.reqLv.ToString();
+			string hard = __instance.IsTooHard ? $"Lv:{__instance.toolLv.ToString()}<{__instance.reqLv.ToString()}" : $"Lv:{__instance.toolLv.ToString()} >= " + __instance.reqLv;
 			
 			if (__instance.pos.cell.growth != null) {
 				int growthNow = __instance.pos.cell.growth.stage.idx ;
